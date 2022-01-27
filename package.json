@@ -1,15 +1,15 @@
 {
   "name": "cac_ts",
   "version": "1.0.0",
-  "description": "",
+  "description": "Convert and Calculate by RPN for typescript",
   "main": "./src/core.ts",
   "scripts": {
     "build": "tsc",
     "build-dear-web": "browserify ./common/* > ./dist/*",
     "clean": "rm -rf ./dist/"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "akamurasaki",
+  "license": "MIT",
   "devDependencies": {
     "typescript": "^4.6.0-dev.20220126",
     "vinyl-source-stream": "^2.0.0"
