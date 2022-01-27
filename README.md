@@ -12,8 +12,6 @@
   <a href="https://github.com/poyuaki/CoaCa.js">Coaca.js</a>
 </div>
 
-test
-
 ## 使い方
 1. distフォルダ内のjavascriptファイルをダウンロードします
 2. その中のcoaca.jsファイルを実行したいjavascriptファイル内にてimportします
