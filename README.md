@@ -12,6 +12,10 @@
   <a href="https://github.com/poyuaki/CoaCa.js">Coaca.js</a>
 </div>
 
+## Todo
+[-] Coaca.jsと同じようにする
+[-] sin(...)やln(...)、!(...)のような数式を実装
+
 ## 使い方
 1. distフォルダ内のjavascriptファイルをダウンロードします
 2. その中のcoaca.jsファイルを実行したいjavascriptファイル内にてimportします
