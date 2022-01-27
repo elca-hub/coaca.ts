@@ -1,0 +1,15 @@
+{
+  "include": ["./src/**/*"], // コンパイル対象のファイル
+  "compilerOptions": {
+    "outDir": "./dist", // コンパイル出力先フォルダ
+    "rootDir": "./src",
+    "target": "es2020", // どのバージョンのjsで出力するか
+    "module": "Node12", // どのバージョンのmoduleで出力するか
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "noUnusedLocals": true, // 宣言されたが使用されていない変数があった場合エラーとするか
+    "noUnusedParameters": true, // 関数の作成時、定義しているのに中身のコードで使われていない場合にエラーとするか
+    "noImplicitReturns": true // 条件分岐した場合にreturnがないルートがある場合エラーとするか
+  }
+}

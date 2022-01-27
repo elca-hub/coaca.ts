@@ -1,0 +1,21 @@
+{
+  "name": "cac_ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/core.ts",
+  "scripts": {
+    "build": "tsc",
+    "build-dear-web": "browserify ./common/* > ./dist/*",
+    "clean": "rm -rf ./dist/"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.6.0-dev.20220126",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "dependencies": {
+    "requirejs": "^2.3.6"
+  },
+  "type": "module"
+}
