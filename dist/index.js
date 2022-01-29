@@ -1051,33 +1051,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/js/coaca.ts":
-/*!*************************!*\
-  !*** ./src/js/coaca.ts ***!
-  \*************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Calc": () => (/* binding */ calcApplication),
-/* harmony export */   "ConvertRpn": () => (/* binding */ convertApplication),
-/* harmony export */   "Variable": () => (/* binding */ variableApplication)
-/* harmony export */ });
-/* harmony import */ var _modules_application_calcApplication__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/application/calcApplication */ "./src/js/modules/application/calcApplication.ts");
-/* harmony import */ var _modules_application_convertApplication__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/application/convertApplication */ "./src/js/modules/application/convertApplication.ts");
-/* harmony import */ var _modules_application_variableApplication__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/application/variableApplication */ "./src/js/modules/application/variableApplication.ts");
-
-
-
-var calcApplication = _modules_application_calcApplication__WEBPACK_IMPORTED_MODULE_0__.CalcApplication;
-var convertApplication = _modules_application_convertApplication__WEBPACK_IMPORTED_MODULE_1__.ConvertApplication;
-var variableApplication = _modules_application_variableApplication__WEBPACK_IMPORTED_MODULE_2__.VariableApplication;
-
-
-
-/***/ }),
-
 /***/ "./src/js/modules/application/calcApplication.ts":
 /*!*******************************************************!*\
   !*** ./src/js/modules/application/calcApplication.ts ***!
@@ -1496,14 +1469,16 @@ var FormulaControl = /** @class */ (function () {
         };
         switch (ope) {
             case '+':
-                var x = new big_js__WEBPACK_IMPORTED_MODULE_0__.Big(num1);
-                return x.plus(num2);
+                var plus = new big_js__WEBPACK_IMPORTED_MODULE_0__.Big(num1);
+                return plus.plus(num2);
             case '-':
-                return num2 - num1;
+                var minus = new big_js__WEBPACK_IMPORTED_MODULE_0__.Big(num2);
+                return minus.minus(num1);
             case '*':
                 return num1 * num2;
             case '/':
-                return num2 / num1;
+                var div = new big_js__WEBPACK_IMPORTED_MODULE_0__.Big(num2);
+                return div.div(num1);
             case '^':
                 return Math.pow(num2, num1);
             case '%':
@@ -1875,43 +1850,30 @@ var __webpack_exports__ = {};
   !*** ./src/js/index.ts ***!
   \*************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _coaca__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./coaca */ "./src/js/coaca.ts");
-/* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../css/style.css */ "./src/css/style.css");
+/* harmony import */ var _modules_application_calcApplication__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/application/calcApplication */ "./src/js/modules/application/calcApplication.ts");
+/* harmony import */ var _modules_application_convertApplication__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/application/convertApplication */ "./src/js/modules/application/convertApplication.ts");
+/* harmony import */ var _modules_application_variableApplication__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/application/variableApplication */ "./src/js/modules/application/variableApplication.ts");
+/* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../css/style.css */ "./src/css/style.css");
 
 
-var variableList = {
-    a: 15,
-    b: 13,
-    c: 14
-};
-var setVariableList = function (variable, variableList) {
-    for (var key in variableList) {
-        variable.addVariable(key, variableList[key]);
-    }
-};
-/* sを求める処理 */
-var s = function () {
-    var convert = new _coaca__WEBPACK_IMPORTED_MODULE_0__.ConvertRpn();
-    convert.setFormula('(a+b+c)/2');
-    var rpnArr = convert.convertRpn();
-    var variable = new _coaca__WEBPACK_IMPORTED_MODULE_0__.Variable();
-    setVariableList(variable, variableList);
-    rpnArr = variable.convertVariable(rpnArr);
-    var calc = new _coaca__WEBPACK_IMPORTED_MODULE_0__.Calc();
-    return String(calc.calc(rpnArr));
-};
-var res = function (sNum) {
-    var convert = new _coaca__WEBPACK_IMPORTED_MODULE_0__.ConvertRpn();
-    convert.setFormula('(s*(s-a)*(s-b)*(s-c))^(1/2)');
-    var rpnArr = convert.convertRpn();
-    var variable = new _coaca__WEBPACK_IMPORTED_MODULE_0__.Variable();
-    setVariableList(variable, variableList);
-    variable.addVariable('s', Number(sNum));
-    rpnArr = variable.convertVariable(rpnArr);
-    var calc = new _coaca__WEBPACK_IMPORTED_MODULE_0__.Calc();
-    return calc.calc(rpnArr);
-};
-console.log(res(s()));
+
+
+var variable = new _modules_application_variableApplication__WEBPACK_IMPORTED_MODULE_2__.VariableApplication();
+function submitCalc() {
+    var convert = new _modules_application_convertApplication__WEBPACK_IMPORTED_MODULE_1__.ConvertApplication();
+    var val = document.getElementById('formulaInput');
+    convert.setFormula(val.value);
+    var rpn = convert.convertRpn();
+    rpn = variable.convertVariable(rpn);
+    var calc = new _modules_application_calcApplication__WEBPACK_IMPORTED_MODULE_0__.CalcApplication();
+    calc.setRpnArr(rpn);
+    var result = calc.calc();
+    val.value = result;
+}
+document.getElementById('formulaForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    submitCalc();
+});
 
 })();
 

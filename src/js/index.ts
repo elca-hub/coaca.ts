@@ -1,45 +1,24 @@
-import {Calc, ConvertRpn, Variable} from './coaca'
+import { CalcApplication } from './modules/application/calcApplication'
+import { ConvertApplication } from './modules/application/convertApplication'
+import { VariableApplication } from './modules/application/variableApplication'
 
 import './../css/style.css'
 
-const variableList = {
-  a: 15,
-  b: 13,
-  c: 14
+const variable = new VariableApplication()
+
+function submitCalc () {
+  const convert = new ConvertApplication()
+  const val = document.getElementById('formulaInput') as HTMLInputElement
+  convert.setFormula(val.value)
+  let rpn = convert.convertRpn()
+  rpn = variable.convertVariable(rpn)
+  const calc = new CalcApplication()
+  calc.setRpnArr(rpn)
+  const result = calc.calc()
+  val.value = result
 }
 
-const setVariableList = (variable: any, variableList: object) => {
-  for (let key in variableList) {
-    variable.addVariable(key, variableList[key])
-  }
-}
-
-/* sを求める処理 */
-const s = (): string => {
-  const convert = new ConvertRpn()
-  convert.setFormula('(a+b+c)/2')
-  let rpnArr = convert.convertRpn()
-
-  const variable = new Variable()
-  setVariableList(variable, variableList)
-  rpnArr = variable.convertVariable(rpnArr)
-
-  const calc = new Calc()
-  return String(calc.calc(rpnArr))
-}
-
-const res = (sNum: string) => {
-  const convert = new ConvertRpn()
-  convert.setFormula('(s*(s-a)*(s-b)*(s-c))^(1/2)')
-  let rpnArr = convert.convertRpn()
-
-  const variable = new Variable()
-  setVariableList(variable, variableList)
-  variable.addVariable('s', Number(sNum))
-  rpnArr = variable.convertVariable(rpnArr)
-
-  const calc = new Calc()
-  return calc.calc(rpnArr)
-}
-
-console.log(res(s()))
+document.getElementById('formulaForm').addEventListener('submit', (e) => {
+  e.preventDefault()
+  submitCalc()
+})

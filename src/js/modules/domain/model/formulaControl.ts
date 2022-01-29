@@ -49,14 +49,16 @@ export class FormulaControl {
     }
     switch (ope) {
       case '+':
-        const x = new Big(num1)
-        return x.plus(num2)
+        const plus = new Big(num1)
+        return plus.plus(num2)
       case '-':
-        return num2 - num1
+        const minus = new Big(num2)
+        return minus.minus(num1)
       case '*':
         return num1 * num2
       case '/':
-        return num2 / num1
+        const div = new Big(num2)
+        return div.div(num1)
       case '^':
         return num2 ** num1
       case '%':
