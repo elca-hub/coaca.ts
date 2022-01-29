@@ -18,6 +18,10 @@
 - [ ] sin(...)やln(...)、!(...)のような数式を実装
 - [ ] オニオンアーキテクチャの実装🧅
 
+## 用語
+- RPN => 逆ポーランド記法の略称
+- RPN配列 => RPNへ変換した時に出力される配列。AB+の場合、['A', 'B', '+']となる
+
 ## 使い方
 1. distフォルダ内のjavascriptファイルをダウンロードします
 2. その中のcoaca.jsファイルを実行したいjavascriptファイル内にてimportします
@@ -26,46 +30,59 @@
 ## 機能一覧
 ### インポート
 ```js
-import {Coaca} from './coaca/coaca.js'
+import {Calc, ConvertRpn, Variable} from './coaca/coaca.js'
 ```
+クラス名とそのクラスの役割です。必要に応じて変更してください。
+| クラス名 | 内容 |
+| :-------: | :-------: |
+| Calc  | 計算  |
+| ConvertRpn  | RPNへの変換  |
+| Variable | 計算式の変数に関する内容 |
 
-### インスタンス化
+### RPN配列の生成
 ```js
-const coaca = new Coaca()
+const convertRpn = new ConvertRpn()
+convertRpn.setFormula('11+16')
+const rpnArr = convertRpn.convertRpn()
+console.log(rpnArr.join(' ')) // 11 16 +
 ```
-
-### 数式代入
-```js
-coaca.setFormula('1+9')
-```
-
-### RPN配列へ変換
-```js
-const rpnArr = coaca.convert()
-console.log(rpnArr.join(' ')) // 1 9 +
-```
+RPN配列を生成します。
 
 ### 計算
 ```js
-coaca.calc(rpnArr)
+const calc = new Calc()
+calc.setRpnArr(rpnArr) // rpnArr = ['11', '16', '+']
+const res = calc.calc()
+console.log(res) // 31
 ```
-calcメソッドを使用する場合、引数にはconvertメソッドで取得した配列を指定する必要があります。
-もしも引数を指定しなかった場合、自動的に現在代入されている数式をRPN配列へ変換、その値を計算に用います。
+RPN配列から計算を行います。
 
-### 変数機能
-**注意** : この機能は近い将来別クラスに分類される可能性があります
-
+### 変数機能について
 #### 追加
 ```js
-coaca.createVariable('x', 3)
+const variable = new Variable()
+variable.addVariable('x', 20)
 ```
+変数の追加を行います。上の例では、変数x(初期値20)を設定してます。
 
-#### 変更
+#### 値の変更
 ```js
-coaca.changeVariable('x', 5)
+variable.changeVariable('x', 10)
 ```
+変数の値を変更します。
 
-#### 削除
+#### 変数の削除
 ```js
-coaca.removeVariable('x')
+variable.removeVariable('x')
 ```
+変数を削除します。
+
+#### 変数の代入
+```js
+let rpnArr = ['11', 'x', '+']
+
+/* xに16を代入 */
+
+rpnArr = variable.convertVariable(rpnArr) // ['11', '16', '+']
+```
+変数を代入します。
