@@ -10,12 +10,11 @@ export class Variable {
     let resArr: string[]
     resArr = rpnArr
     for (let i = 0; i < resArr.length; i++) {
-      for (let k = 0; k < variableList.length; k++) {
-        if (resArr[i] === variableList[k].name) {
-          resArr[i] = String(variableList[k].value)
-          break
+      variableList.forEach(variable => {
+        if (variable.name === resArr[i]) {
+          resArr[i] = String(variable.value)
         }
-      }
+      })
     }
     return resArr
   }
@@ -25,17 +24,18 @@ export class Variable {
    * @returns 変数の配列に存在するか
    */
   isInVariableList (name: string, variableList: IVariable[]) {
-    for (let i = 0; i < variableList.length; i++) {
-      if (variableList[i].name === name) return true
-    }
-    return false
+    let flag = false
+    variableList.forEach(variable => {
+      if (variable.name === name) flag = true
+    })
+    return flag
   }
   checkVariable (newVariableList: IVariable, variableList: IVariable[]) {
     const isTrueVariableName = (name: string): boolean => {
       const fcClass = new FormulaControl()
-      const isInOpeOrBra = (name: string): boolean => {
-        for (let i = 0; i < name.length; i++) {
-          const val: string = name.substring(i, i + 1)
+      const isInOpeOrBra = (nameOpe: string): boolean => {
+        for (let i = 0; i < nameOpe.length; i++) {
+          const val: string = nameOpe.substring(i, i + 1)
           if (fcClass.isOperator(val) || fcClass.isParren(val) || fcClass.isBracket(val) || fcClass.isSpecialOperator(val)) return true
         }
         return false
@@ -43,14 +43,14 @@ export class Variable {
       return !(name.length > 20 || isInOpeOrBra(name) || this.isInVariableList(name, variableList))
     }
     if (!isTrueVariableName(newVariableList.name)) {
-      throw `The variable name "${newVariableList.name}" is not in the correct format.`
+      throw new Error(`The variable name "${newVariableList.name}" is not in the correct format.`)
     }
   }
   isDefaultVariable(target: string, variableList: IVariable[]) {
     // 変数のisDefaultがtrueならthrow
-    for (let i = 0; i < variableList.length; i++) {
-      if (variableList[i].name === target && variableList[i].isDefault) {
-        throw `The default variable "${target}" can not be actioned.`
+    for (const variable of variableList) {
+      if (variable.name === target && variable.isDefault) {
+        throw new Error(`The variable "${target}" is a default variable.`)
       }
     }
   }

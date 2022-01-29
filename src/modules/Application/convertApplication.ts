@@ -8,7 +8,7 @@ export class ConvertApplication {
   }
   /**
    * 計算式をセットします。計算式の演算子については[演算子について](https://github.com/poyuaki/coaca.ts#%E6%BC%94%E7%AE%97%E5%AD%90%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)を参照してください。
-   * 
+   *
    * @param formula 計算式
    */
   setFormula (formula: string) {

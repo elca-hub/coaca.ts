@@ -1,4 +1,4 @@
-export class calcRepository {
+export class CalcRepository {
   rpnArr: string[]
   constructor () {
     this.rpnArr = []

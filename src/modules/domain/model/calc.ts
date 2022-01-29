@@ -10,8 +10,8 @@ export class Calc {
    * @returns 計算結果(文字列)
    */
   rpnCalc (rpnArr = null) {
-    let stack: string[] = []
-    let fcClass = new FormulaControl()
+    const stack: string[] = []
+    const fcClass = new FormulaControl()
     const targetArr = rpnArr === null ? this.rpnArr : rpnArr
     for (let i = 0; i < targetArr.length; i++) {
       const val = targetArr[i]
@@ -21,7 +21,6 @@ export class Calc {
         let nestCount = 0
         let endIndex = 0
         for (let j = i + 1; j < targetArr.length; j++) {
-          console.log(targetArr[j])
           if (targetArr[j] === '[') {
             if (nestCount === 0) startIndex = j + 1
             nestCount++

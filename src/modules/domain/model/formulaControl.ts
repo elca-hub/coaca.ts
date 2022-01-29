@@ -40,9 +40,9 @@ export class FormulaControl {
    * @returns 計算結果
    */
   calculate (ope: string, val1: string, val2: string) {
-    let num1 = Number(val1)
-    let num2 = Number(val2)
-    let getBaseLog = (x: number, y: number): number => {
+    const num1 = Number(val1)
+    const num2 = Number(val2)
+    const getBaseLog = (x: number, y: number): number => {
       return Math.log(x) / Math.log(y)
     }
     switch (ope) {
@@ -69,7 +69,6 @@ export class FormulaControl {
     return num * this.factorialize(num - 1)
   }
   specialCalc (ope: string, value: string) {
-    console.log(ope, value)
     const num = Number(value)
     switch (ope) {
       case 'sin':

@@ -1,6 +1,6 @@
-import { CalcApplication } from "./modules/Application/calcApplication.js";
-import { ConvertApplication } from "./modules/Application/convertApplication.js";
-import { VariableApplication } from "./modules/Application/variableApplication.js";
+import { CalcApplication } from "./modules/application/calcApplication.js";
+import { ConvertApplication } from "./modules/application/convertApplication.js";
+import { VariableApplication } from "./modules/application/variableApplication.js";
 
 const calcApplication = CalcApplication
 const convertApplication = ConvertApplication

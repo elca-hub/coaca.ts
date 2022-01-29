@@ -6,10 +6,10 @@ export class Convert {
     this.formula = formula
   }
   private setOperatorAndNum (formula: string) {
-    let res = []
+    const res = []
     let add = ''
     let flag = false
-    let fcClass = new FormulaControl()
+    const fcClass = new FormulaControl()
     for (let i = 0; i < formula.length; i++) {
       let val = formula.substring(i, i + 1)
       val = val.replace(/\s+/g, "")
@@ -37,12 +37,12 @@ export class Convert {
     return res
   }
   private exchange (data = '') {
-    let res = []
-    let stock = []
+    const res = []
+    const stock = []
     let flag = false
-    let formula = data === '' ? this.formula : data
-    let valList = this.setOperatorAndNum(formula)
-    let fcClass = new FormulaControl()
+    const formula = data === '' ? this.formula : data
+    const valList = this.setOperatorAndNum(formula)
+    const fcClass = new FormulaControl()
 
     for (let i = 0; i < valList.length; i++) {
       const val = valList[i]
