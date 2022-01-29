@@ -47,4 +47,12 @@ export class Variable {
             throw `The variable name "${newVariableList.name}" is not in the correct format.`;
         }
     }
+    isDefaultVariable(target, variableList) {
+        // 変数のisDefaultがtrueならthrow
+        for (let i = 0; i < variableList.length; i++) {
+            if (variableList[i].name === target && variableList[i].isDefault) {
+                throw `The default variable "${target}" can not be actioned.`;
+            }
+        }
+    }
 }

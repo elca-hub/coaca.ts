@@ -10,7 +10,8 @@ export class Convert {
         let fcClass = new FormulaControl();
         for (let i = 0; i < formula.length; i++) {
             let val = formula.substring(i, i + 1);
-            if (fcClass.isOperator(val) && !fcClass.isBracket(val)) {
+            val = val.replace(/\s+/g, "");
+            if (!fcClass.isOperator(val) && !fcClass.isBracket(val)) {
                 add += val;
             }
             else {

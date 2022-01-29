@@ -47,10 +47,10 @@ export class Variable {
     }
   }
   isDefaultVariable(target: string, variableList: IVariable[]) {
-    // 削除対象の変数のisDefaultがtrueならthrow
+    // 変数のisDefaultがtrueならthrow
     for (let i = 0; i < variableList.length; i++) {
       if (variableList[i].name === target && variableList[i].isDefault) {
-        throw `The default variable "${target}" can not be deleted.`
+        throw `The default variable "${target}" can not be actioned.`
       }
     }
   }

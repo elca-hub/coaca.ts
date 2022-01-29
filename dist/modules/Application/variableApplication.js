@@ -26,6 +26,9 @@ export class VariableApplication {
      * @param value 変更後の値
      */
     changeVariable(name, value) {
+        const variable = new Variable();
+        const variableList = this.VariableRepository.getVariableList();
+        variable.isDefaultVariable(name, variableList);
         this.VariableRepository.changeVariable(name, value);
     }
     /**
@@ -33,6 +36,9 @@ export class VariableApplication {
      * @param name 変数名
      */
     removeVariable(name) {
+        const variable = new Variable();
+        const variableList = this.VariableRepository.getVariableList();
+        variable.isDefaultVariable(name, variableList);
         this.VariableRepository.removeVariable(name);
     }
 }
