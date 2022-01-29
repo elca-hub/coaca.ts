@@ -4,6 +4,12 @@
         "tslint:recommended"
     ],
     "jsRules": {},
-    "rules": {},
+    "rules": {
+        "arrow-parens": true,
+        "eofline": true
+    },
+    "linterOptions": {
+        "typeCheck": true
+    },
     "rulesDirectory": []
 }

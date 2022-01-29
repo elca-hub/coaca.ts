@@ -10,7 +10,7 @@ export class Variable {
     let resArr: string[]
     resArr = rpnArr
     for (let i = 0; i < resArr.length; i++) {
-      variableList.forEach(variable => {
+      variableList.forEach((variable) => {
         if (variable.name === resArr[i]) {
           resArr[i] = String(variable.value)
         }
@@ -25,7 +25,7 @@ export class Variable {
    */
   isInVariableList (name: string, variableList: IVariable[]) {
     let flag = false
-    variableList.forEach(variable => {
+    variableList.forEach((variable) => {
       if (variable.name === name) flag = true
     })
     return flag

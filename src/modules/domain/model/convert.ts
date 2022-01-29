@@ -81,7 +81,7 @@ export class Convert {
         i = endIndex
       }
     }
-    stock.forEach(i => res.push(i))
+    stock.forEach((i) => res.push(i))
     return res
   }
   convertToRPN () {

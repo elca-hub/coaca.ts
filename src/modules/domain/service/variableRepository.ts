@@ -50,7 +50,7 @@ export class VariableRepository {
     this.variableList.push(variableObj)
   }
   public findByName (name: string) {
-    return this.variableList.find(item => item.name === name)
+    return this.variableList.find((item) => item.name === name)
   }
   public getVariableList () {
     return this.variableList
@@ -61,7 +61,7 @@ export class VariableRepository {
    * @param value 変更後の値
    */
    changeVariable (name: string ,value: number) {
-    this.variableList.forEach(item => {
+    this.variableList.forEach((item) => {
       if (item.name === name) item.value = value
     })
   }
@@ -70,6 +70,6 @@ export class VariableRepository {
    * @param name 変数名
    */
    removeVariable (name: string) {
-    this.variableList = this.variableList.filter(item => item.name !== name || item.isDefault)
+    this.variableList = this.variableList.filter((item) => item.name !== name || item.isDefault)
   }
 }

@@ -1,6 +1,16 @@
 import { FormulaControl } from "./formulaControl.js"
 
+/**
+ * RPN配列に対して計算を行うクラス
+ */
 export class Calc {
+  /**
+   * RPN配列
+   *
+   * @private
+   * @type {string[]}
+   * @memberof Calc
+   */
   private rpnArr: string[]
   constructor (rpnArr: string[]) {
     this.rpnArr = rpnArr
