@@ -1,7 +1,10 @@
-import { FormulaControl } from "./coacaFormulaControl.js"
+import { FormulaControl } from "./formulaControl.js"
 
 export class Convert {
   private formula: string
+  constructor (formula: string) {
+    this.formula = formula
+  }
   private setOperatorAndNum (formula: string) {
     let res = []
     let add = ''
@@ -82,8 +85,5 @@ export class Convert {
   }
   convertToRPN () {
     return this.exchange()
-  }
-  setFormula (formula: string) {
-    this.formula = formula
   }
 }

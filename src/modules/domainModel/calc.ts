@@ -1,13 +1,8 @@
-import { Variable } from "./caocaVariable.js"
-import { FormulaControl } from "./coacaFormulaControl.js"
+import { FormulaControl } from "./formulaControl.js"
 
 export class Calc {
   private rpnArr: string[]
-  private variableClass: Variable
-  constructor (vc: Variable) {
-    this.variableClass = vc
-  }
-  setRpnArr (rpnArr: string[]) {
+  constructor (rpnArr: string[]) {
     this.rpnArr = rpnArr
   }
   /**
@@ -15,7 +10,6 @@ export class Calc {
    * @returns 計算結果(文字列)
    */
   rpnCalc () {
-    this.variableClass.convertVariable(this.rpnArr) // 数式に使用されている変数を代入
     let stack: string[] = []
     let fcClass = new FormulaControl()
     this.rpnArr.forEach(val => {
