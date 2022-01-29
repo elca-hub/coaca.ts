@@ -4,11 +4,23 @@ export class VariableApplication {
     constructor() {
         this.VariableRepository = new VariableRepository();
     }
+    /**
+     * 変数に代入する前のRPN配列に対して変数を代入します。
+     *
+     * @param {array} rpnArr RPN配列
+     * @returns {array} 代入し終わったRPN配列
+     */
     convertVariable(rpnArr) {
         const variable = new Variable();
         const variableList = this.VariableRepository.getVariableList();
         return variable.convertVariable(rpnArr, variableList);
     }
+    /**
+     * 変数を新しく生成します。変数については[変数について](https://github.com/poyuaki/coaca.ts#%E5%A4%89%E6%95%B0%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)を参照してください。
+     *
+     * @param name 変数名
+     * @param value 初期値
+     */
     addVariable(name, value) {
         const variable = new Variable();
         const variableList = this.VariableRepository.getVariableList();
@@ -21,7 +33,8 @@ export class VariableApplication {
         this.VariableRepository.save(newVariableList);
     }
     /**
-     * 指定した変数を変更する
+     * 指定した変数を変更します。
+     *
      * @param name 変数名
      * @param value 変更後の値
      */
@@ -32,7 +45,8 @@ export class VariableApplication {
         this.VariableRepository.changeVariable(name, value);
     }
     /**
-     * 指定した変数を削除する
+     * 指定した変数を削除します。
+     *
      * @param name 変数名
      */
     removeVariable(name) {

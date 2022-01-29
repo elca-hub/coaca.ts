@@ -10,6 +10,36 @@ export class VariableRepository {
                 name: 'e',
                 value: Math.E,
                 isDefault: true
+            },
+            {
+                name: 'K',
+                value: 1000,
+                isDefault: true
+            },
+            {
+                name: 'M',
+                value: 1000000,
+                isDefault: true
+            },
+            {
+                name: 'G',
+                value: 1000000000,
+                isDefault: true
+            },
+            {
+                name: 'm',
+                value: 0.001,
+                isDefault: true
+            },
+            {
+                name: 'μ',
+                value: 0.000001,
+                isDefault: true
+            },
+            {
+                name: 'n',
+                value: 0.000000001,
+                isDefault: true
             }
         ];
     }
