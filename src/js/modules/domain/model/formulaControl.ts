@@ -1,3 +1,5 @@
+import { Big } from 'big.js'
+
 export class FormulaControl {
   private operatorList: string[]
   private specialOperatorList: string[]
@@ -47,7 +49,8 @@ export class FormulaControl {
     }
     switch (ope) {
       case '+':
-        return num1 + num2
+        const x = new Big(num1)
+        return x.plus(num2)
       case '-':
         return num2 - num1
       case '*':
@@ -65,7 +68,7 @@ export class FormulaControl {
     }
   }
   private factorialize (num: number) {
-    if (num === 0 || num === 1) return 1
+    if (num === 0) return 1
     return num * this.factorialize(num - 1)
   }
   specialCalc (ope: string, value: string) {

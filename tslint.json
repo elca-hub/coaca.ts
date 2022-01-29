@@ -6,7 +6,8 @@
     "jsRules": {},
     "rules": {
         "arrow-parens": true,
-        "eofline": true
+        "eofline": true,
+        "no-console": false
     },
     "linterOptions": {
         "typeCheck": true

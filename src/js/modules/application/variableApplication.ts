@@ -1,5 +1,5 @@
-import { VariableRepository } from "../domainService/variableRepository.js";
-import { Variable, IVariable } from "../domainModel/variable.js";
+import { VariableRepository } from "../domain/service/variableRepository";
+import { Variable, IVariable } from "../domain/model/variable";
 
 export class VariableApplication {
   private VariableRepository: VariableRepository

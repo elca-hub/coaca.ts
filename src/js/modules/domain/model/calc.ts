@@ -1,4 +1,4 @@
-import { FormulaControl } from "./formulaControl.js"
+import { FormulaControl } from "./formulaControl"
 
 /**
  * RPN配列に対して計算を行うクラス

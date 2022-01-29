@@ -1,5 +1,5 @@
-import { ConvertRepository } from "../domainService/convertRepository.js";
-import { Convert } from "../domainModel/convert.js";
+import { ConvertRepository } from "../domain/service/convertRepository";
+import { Convert } from "../domain/model/convert";
 
 export class ConvertApplication {
   private convertRepository: ConvertRepository

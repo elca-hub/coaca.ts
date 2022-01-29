@@ -1,4 +1,4 @@
-import {IVariable} from  '../model/variable.js'
+import {IVariable} from  '../model/variable'
 
 export class VariableRepository {
   variableList: IVariable[]

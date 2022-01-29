@@ -1,10 +1,13 @@
 {
   "include": ["./src/**/*"], // コンパイル対象のファイル
   "compilerOptions": {
+    "moduleResolution": "node",
     "outDir": "./dist", // コンパイル出力先フォルダ
     "rootDir": "./src",
-    "target": "es2020", // どのバージョンのjsで出力するか
-    "module": "Node12", // どのバージョンのmoduleで出力するか
+    "lib": ["DOM", "esnext"],
+    "skipDefaultLibCheck": true,
+    "target": "es5", // どのバージョンのjsで出力するか
+    "module": "es2015", // どのバージョンのmoduleで出力するか
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,

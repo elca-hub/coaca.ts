@@ -1,5 +1,5 @@
-import { CalcRepository } from "../domain/service/calcRepository.js"
-import { Calc } from "../domain/model/calc.js"
+import { CalcRepository } from "../domain/service/calcRepository"
+import { Calc } from "../domain/model/calc"
 
 export class CalcApplication {
   private calcRepository: CalcRepository

@@ -1,4 +1,4 @@
-import { FormulaControl } from "./formulaControl.js"
+import { FormulaControl } from "./formulaControl"
 
 export class Convert {
   private formula: string
