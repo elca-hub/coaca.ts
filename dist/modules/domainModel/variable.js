@@ -36,7 +36,7 @@ export class Variable {
             const isInOpeOrBra = (name) => {
                 for (let i = 0; i < name.length; i++) {
                     const val = name.substring(i, i + 1);
-                    if (fcClass.isOperator(val) || fcClass.isBracket(val))
+                    if (fcClass.isOperator(val) || fcClass.isParren(val) || fcClass.isBracket(val) || fcClass.isSpecialOperator(val))
                         return true;
                 }
                 return false;

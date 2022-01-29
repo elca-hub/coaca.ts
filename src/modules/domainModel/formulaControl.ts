@@ -3,7 +3,7 @@ export class FormulaControl {
   private specialOperatorList: string[]
   constructor () {
     this.operatorList = ['+', '-', '*', '/', '^', '_', '%']
-    this.specialOperatorList = ['sin', 'cos', 'tan']
+    this.specialOperatorList = ['sin', 'cos', 'tan', '!', 'rad', 'abs', 'asin', 'acos', 'atan', 'ln']
   }
   /**
    * 検索対象が演算子であるかどうか
@@ -64,6 +64,10 @@ export class FormulaControl {
         return 0
     }
   }
+  private factorialize (num: number) {
+    if (num === 0 || num === 1) return 1
+    return num * this.factorialize(num - 1)
+  }
   specialCalc (ope: string, value: string) {
     console.log(ope, value)
     const num = Number(value)
@@ -74,6 +78,20 @@ export class FormulaControl {
         return Math.cos(num)
       case 'tan':
         return Math.tan(num)
+      case '!':
+        return this.factorialize(num)
+      case 'rad':
+        return num * Math.PI / 180
+      case 'abs':
+        return Math.abs(num)
+      case 'asin':
+        return Math.asin(num)
+      case 'acos':
+        return Math.acos(num)
+      case 'atan':
+        return Math.atan(num)
+      case 'ln':
+        return Math.log(num)
       default:
         return 0
     }

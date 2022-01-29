@@ -45,7 +45,6 @@ export class Calc {
             else if (fcClass.isOperator(val)) {
                 stack.push(String(fcClass.calculate(val, stack.pop(), stack.pop())));
             }
-            console.log(stack);
         }
         return stack[0];
     }
