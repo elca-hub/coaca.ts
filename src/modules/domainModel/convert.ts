@@ -13,7 +13,7 @@ export class Convert {
     for (let i = 0; i < formula.length; i++) {
       let val = formula.substring(i, i + 1)
       val = val.replace(/\s+/g, "")
-      if (!fcClass.isOperator(val) && !fcClass.isBracket(val)) {
+      if (!fcClass.isOperator(val) && !fcClass.isParren(val) && !fcClass.isBracket(val)) {
         add += val
       } else {
         if (add !== '') {
@@ -47,7 +47,7 @@ export class Convert {
     for (let i = 0; i < valList.length; i++) {
       const val = valList[i]
       if (val === '') continue
-      if (!(fcClass.isOperator(val) || fcClass.isBracket(val))) {
+      if (!(fcClass.isOperator(val) || fcClass.isParren(val))) {
         res.push(val)
         if (stock.length) res.push(stock.pop())
       } else if (fcClass.isOperator(val)) {
@@ -59,7 +59,7 @@ export class Convert {
         if (flag && fcClass.importanceNum(val) > fcClass.importanceNum(res[res.length - 1])) stock.push(res.pop())
         flag = true
         stock.push(val)
-      } else if (fcClass.isBracket(val)) {
+      } else if (fcClass.isParren(val)) {
         const startIndex = i + 1
         let nestCount = 0
         let endIndex = 0

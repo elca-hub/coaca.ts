@@ -1,7 +1,9 @@
 export class FormulaControl {
   private operatorList: string[]
+  private specialOperatorList: string[]
   constructor () {
     this.operatorList = ['+', '-', '*', '/', '^', '_', '%']
+    this.specialOperatorList = ['sin', 'cos', 'tan']
   }
   /**
    * 検索対象が演算子であるかどうか
@@ -11,13 +13,24 @@ export class FormulaControl {
   isOperator (val: string) {
     return this.operatorList.indexOf(val) !== -1
   }
+  isSpecialOperator (val: string) {
+    return this.specialOperatorList.indexOf(val) !== -1
+  }
   /**
    * 検索対象が丸括弧であるかどうか
    * @param val 検索対象の文字列
    * @returns 結果
    */
-  isBracket (val: string) {
+  isParren (val: string) {
     return val === '(' || val === ')'
+  }
+  /**
+   * 検索対象が角括弧であるかどうか
+   * @param val 対象の文字列
+   * @returns 結果
+   */
+  isBracket (val: string) {
+    return val === '[' || val === ']'
   }
   /**
    * 演算子に従った計算を行う
@@ -51,13 +64,27 @@ export class FormulaControl {
         return 0
     }
   }
+  specialCalc (ope: string, value: string) {
+    console.log(ope, value)
+    const num = Number(value)
+    switch (ope) {
+      case 'sin':
+        return Math.sin(num)
+      case 'cos':
+        return Math.cos(num)
+      case 'tan':
+        return Math.tan(num)
+      default:
+        return 0
+    }
+  }
   /**
    * 対象によって異なる重みを返す
    * @param val 対象の文字
    * @returns 重要度
    */
   importanceNum (val: string) {
-    if (this.isBracket(val)) return 5
+    if (this.isParren(val) || this.isBracket(val)) return 5
     if (val === '^' || val === '%' || val === '_') return 4
     if (val === '*' || val === '/') return 3
     if (val === '+' || val === '-') return 2
