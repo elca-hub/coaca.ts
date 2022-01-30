@@ -1,0 +1,50 @@
+.input-variable-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.input-variable-button-box {
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+}
+
+/* formula-inputに依存している部分多々あり */
+.input-variable-form { 
+  font-size: 2rem;
+  text-align: center;
+  color: #f4f4f4;
+  border: none;
+}
+
+.input-variable-form::placeholder {
+  color: #cecece;
+  opacity: 1;
+  transition: opacity .5s;
+}
+
+.input-variable-form:focus::placeholder {
+  opacity: 0.5;
+}
+
+.input-variable-form:focus {
+  border-bottom: solid 1px #505586;
+}
+
+.input-variable-button {
+  margin-top: 20px;
+  width: 100vw;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.input-variable-button-confirm, .input-variable-button-cancel {
+  cursor: pointer;
+}
+
+.input-variable-button-confirm-text, .input-variable-button-cancel-text {
+  font-size: 1.5rem;
+  color: #585858;
+}
