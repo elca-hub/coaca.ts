@@ -4,8 +4,9 @@
   "description": "Convert and Calculate by RPN for typescript",
   "main": "./src/core.ts",
   "scripts": {
-    "dev-build": "rm -rf ./dist/ ; MODE=development npx webpack",
-    "pro-build": "rm -rf ./dist/ ; MODE=production npx webpack"
+    "dev-build": "rm -rf ./dist/ ; MODE=development npx webpack --watch",
+    "pro-build": "rm -rf ./dist/ ; MODE=production npx webpack",
+    "serve": "webpack serve"
   },
   "author": "akamurasaki",
   "license": "MIT",
@@ -14,6 +15,8 @@
     "@types/jquery": "^3.5.13",
     "axios": "^0.25.0",
     "big.js": "^6.1.1",
+    "browser-sync": "^2.27.7",
+    "browser-sync-webpack-plugin": "^2.3.0",
     "html-webpack-plugin": "^5.5.0",
     "jquery": "^3.6.0",
     "mini-css-extract-plugin": "^2.5.3",
@@ -21,7 +24,8 @@
     "typescript": "^4.6.0-dev.20220126",
     "vinyl-source-stream": "^2.0.0",
     "webpack": "^5.67.0",
-    "webpack-cli": "^4.9.2"
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.3"
   },
   "dependencies": {
     "@types/node": "^17.0.13",

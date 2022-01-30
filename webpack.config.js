@@ -40,6 +40,19 @@ module.exports = {
     ]
   },
 
+  devServer: {
+    static: path.resolve(__dirname, 'dist'),
+    open : true,
+    port: 3000,
+    client: {
+      overlay: true
+    }
+  },
+
+  watchOptions: {
+    ignored: /node_modules/
+  },
+
   plugins: [
     // HTML ファイルの出力設定
     new HtmlWebpackPlugin({
