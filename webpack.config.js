@@ -3,11 +3,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-const modeEnv = process.env.MODE === 'production' ? 'production' : 'development';
 
 module.exports = {
   // 開発用の設定
-  mode: modeEnv,
+  mode: 'development',
 
   resolve: {
     extensions: ['.js', '.ts']

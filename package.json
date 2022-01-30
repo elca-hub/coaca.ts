@@ -4,8 +4,8 @@
   "description": "Convert and Calculate by RPN for typescript",
   "main": "./src/core.ts",
   "scripts": {
-    "dev-build": "rm -rf ./dist/ ; MODE=development npx webpack --watch",
-    "pro-build": "rm -rf ./dist/ ; MODE=production npx webpack",
+    "dev-build": "webpack --mode development",
+    "pro-build": "webpack --mode production && find ./dist/js -type f -empty -delete",
     "serve": "webpack serve",
     "watch": "webpack --mode development --watch"
   },
