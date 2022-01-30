@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const modeEnv = process.env.MODE === 'production' ? 'production' : 'development';
 
@@ -13,12 +14,15 @@ module.exports = {
   },
 
   // エントリポイントとなるコード
-  entry: './src/js/index.ts',
+  entry: {
+    'index': path.resolve(__dirname, 'src/js/index.ts'),
+    'style.css': path.resolve(__dirname, 'src/scss/style.scss'),
+  },
 
   // バンドル後の js ファイルの出力先
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'index.js'
+    path: path.resolve(__dirname, 'dist/'),
+    filename: 'js/[name].js'
   },
 
   // ソースマップファイルの出力設定
@@ -34,8 +38,13 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader']
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          'sass-loader'
+        ]
       }
     ]
   },
@@ -54,10 +63,15 @@ module.exports = {
   },
 
   plugins: [
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: ['**/*']
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name]'
+    }),
     // HTML ファイルの出力設定
     new HtmlWebpackPlugin({
       template: './src/index.html'
-    }),
-    new MiniCssExtractPlugin()
+    })
   ]
 };

@@ -3,8 +3,6 @@ import { ConvertApplication } from './modules/application/convertApplication'
 import { VariableApplication } from './modules/application/variableApplication'
 import { ViewApplication } from './modules/application/viewApplication'
 
-import './../css/style.css'
-
 const variable = new VariableApplication()
 
 function submitCalc () {
