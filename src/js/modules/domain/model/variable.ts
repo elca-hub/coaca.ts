@@ -28,7 +28,6 @@ export class Variable {
     variableList.forEach((variable) => {
       if (variable.name === name) flag = true
     })
-    console.log(flag)
     return flag
   }
   checkVariable (newVariableList: IVariable, variableList: IVariable[]) {

@@ -58,6 +58,7 @@ body {
   padding-right: 3rem;
   color: #2b2b2b;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .variable-control-button-text {
@@ -85,6 +86,7 @@ body {
 .input-variable-button-box {
   width: 100vw;
   display: flex;
+  justify-content: space-around;
 }
 
 /* formula-inputに依存している部分多々あり */
@@ -114,6 +116,10 @@ body {
   width: 100vw;
   display: flex;
   justify-content: space-evenly;
+}
+
+.input-variable-button-confirm, .input-variable-button-cancel {
+  cursor: pointer;
 }
 
 .input-variable-button-confirm-text, .input-variable-button-cancel-text {
