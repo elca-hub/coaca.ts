@@ -2,7 +2,8 @@
 <html>
   <head>
     <title>Coaca.ts</title>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
     <div class="header">
@@ -11,10 +12,19 @@
     <div class="main">
       <div class="formula-box">
         <form id="formulaForm" class="formula-form">
-          <input type="text" id="formulaInput" class="formula-input" placeholder="式を入力" />
+          <input type="text" id="formulaInput" class="formula-input" placeholder="式を入力" contenteditable="true" />
         </form>
+      </div>
+      <div class="variable-box">
+        <div class="variable-control-box">
+          <div class="variable-control-button variable-control-button-add" id="variableAdd">
+            <span class="variable-control-button-text">変数を追加</span>
+          </div>
+        </div>
+        <div class="variable-list"></div>
       </div>
     </div>
     <div class="footer"></div>
+    <div id="alertContent" class="alert-content"></div>
   </body>
 </html>

@@ -1,6 +1,7 @@
 import { CalcApplication } from './modules/application/calcApplication'
 import { ConvertApplication } from './modules/application/convertApplication'
 import { VariableApplication } from './modules/application/variableApplication'
+import { ViewApplication } from './modules/application/viewApplication'
 
 import './../css/style.css'
 
@@ -18,7 +19,18 @@ function submitCalc () {
   val.value = result
 }
 
+function variableAdd () {
+  const view = new ViewApplication()
+  view.createVariableInput(variable)
+  view.showAlert()
+}
+
 document.getElementById('formulaForm').addEventListener('submit', (e) => {
   e.preventDefault()
   submitCalc()
+})
+
+document.getElementById('variableAdd').addEventListener('click', (e) => {
+  e.preventDefault()
+  variableAdd()
 })

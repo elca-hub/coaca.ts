@@ -28,6 +28,7 @@ export class Variable {
     variableList.forEach((variable) => {
       if (variable.name === name) flag = true
     })
+    console.log(flag)
     return flag
   }
   checkVariable (newVariableList: IVariable, variableList: IVariable[]) {
@@ -36,7 +37,7 @@ export class Variable {
       const isInOpeOrBra = (nameOpe: string): boolean => {
         for (let i = 0; i < nameOpe.length; i++) {
           const val: string = nameOpe.substring(i, i + 1)
-          if (fcClass.isOperator(val) || fcClass.isParren(val) || fcClass.isBracket(val) || fcClass.isSpecialOperator(val)) return true
+          if (fcClass.isOperator(val) || fcClass.isParren(val) || fcClass.isBracket(val)) return true
         }
         return false
       }
