@@ -91,7 +91,12 @@ export class VariableRepository {
     this.setLocalStrorage(this.findNotDefaultVariable())
   }
   getNewId (): number {
-    return this.variableList.length
+    // variableListの中で最大のidを取得する
+    const maxId = this.variableList.reduce((max, item) => {
+      return item.id > max ? item.id : max
+    }
+    , 0)
+    return maxId + 1
   }
 
   private setLocalStrorage (variableList: IVariable[]) {

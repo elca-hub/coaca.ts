@@ -11,6 +11,11 @@
   color: #2b2b2b;
   border-radius: 10px;
   cursor: pointer;
+  opacity: 1;
+  transition: opacity .5s;
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .variable-control-button-text {
@@ -21,14 +26,15 @@
   display: flex;
   justify-content: space-evenly;
   font-size: 2.6rem;
+  cursor: pointer;
+  border-bottom: none;
+  &:hover {
+    border-bottom: solid 1px $mainColor1;
+  }
 }
 
 .delete-variable-button-box {
   text-align: center;
-}
-
-.variable-list-item {
-  cursor: pointer;
 }
 
 .delete-variable-button {
