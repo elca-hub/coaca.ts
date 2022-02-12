@@ -92,6 +92,7 @@ export class View {
     /* 変数リストの親 */
     const variableListDom = document.getElementById('variableList')
     variableListDom.innerHTML = ''
+    console.log(variableList)
 
     for (const variable of variableList) {
       /* 変数リストのアイテム */
@@ -107,7 +108,7 @@ export class View {
       /* 変数の値 */
       const variableValueDom = document.createElement('div')
       variableValueDom.classList.add('variable-list-item-value')
-      variableValueDom.innerText = variable.value.toString()
+      variableValueDom.innerText = variable.value === null ? 'WhyYouSetNull?' : variable.value.toString()
 
       variableDom.appendChild(variableNameDom)
       variableDom.appendChild(variableValueDom)
