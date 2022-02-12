@@ -85,8 +85,9 @@ export class VariableRepository {
    * 指定した変数を削除する
    * @param name 変数名
    */
-  removeVariable (name: string) {
-    this.variableList = this.variableList.filter((item) => item.name !== name || item.isDefault)
+  removeVariable (id: number) {
+    this.variableList = this.variableList.filter((item) => item.id !== id)
+    this.setLocalStrorage(this.findNotDefaultVariable())
   }
   getNewId (): number {
     return this.variableList.length

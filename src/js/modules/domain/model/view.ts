@@ -21,7 +21,7 @@ export class View {
    *
    * @memberof View
    */
-  cretateInputVariable () {
+  cretateInputVariable (viewDeleteButton: boolean = false) {
     /* 全ての親 */
     const inputVariableDom = document.createElement('div')
     inputVariableDom.classList.add('input-variable-box')
@@ -40,6 +40,17 @@ export class View {
     inputVariableValueDivDom.appendChild(inputVariableValueDom)
     inputBoxDom.appendChild(inputVariableNameDivDom)
     inputBoxDom.appendChild(inputVariableValueDivDom)
+
+    let deleteVariableButtonDivDom = null
+    if (viewDeleteButton) {
+      deleteVariableButtonDivDom = document.createElement('div')
+      deleteVariableButtonDivDom.classList.add('delete-variable-button-box')
+      const deleteVariableButtonDom = document.createElement('div')
+      deleteVariableButtonDom.classList.add('delete-variable-button')
+      deleteVariableButtonDom.innerText = '削除'
+      deleteVariableButtonDom.id = 'deleteVariableButton'
+      deleteVariableButtonDivDom.appendChild(deleteVariableButtonDom)
+    }
 
     /* 確定ボタン、キャンセルボタンを含むDIV親 */
     const inputVariableButtonDom = document.createElement('div')
@@ -71,6 +82,7 @@ export class View {
     inputVariableButtonDom.appendChild(inputVariableButtonCancelDom)
 
     inputVariableDom.appendChild(inputBoxDom)
+    if (viewDeleteButton) inputVariableDom.appendChild(deleteVariableButtonDivDom)
     inputVariableDom.appendChild(inputVariableButtonDom)
 
     return inputVariableDom

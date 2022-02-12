@@ -31,13 +31,18 @@ export class ViewApplication {
   }
   createChangeVariableInput (variable: VariableApplication, id: number) {
     const view = new View()
-    this.cretateAlert(view.cretateInputVariable())
+    this.cretateAlert(view.cretateInputVariable(true))
     this.setVaribaleInput(variable.getRepository().findById(id))
     document.getElementById('variableCancel').addEventListener('click', () => { this.hideAlert() })
     document.getElementById('variableConfirm').addEventListener('click', () => {
       const nameEle = document.getElementById('inputVariableName') as HTMLInputElement
       const valEle = document.getElementById('inputVariableValue') as HTMLInputElement
       variable.changeVariable(nameEle.value, Number(valEle.value), id)
+      this.hideAlert()
+      this.viewVariableList(variable.getRepository(), variable)
+    })
+    document.getElementById('deleteVariableButton').addEventListener('click', () => {
+      variable.removeVariable(id, variable.getRepository().findById(id).name)
       this.hideAlert()
       this.viewVariableList(variable.getRepository(), variable)
     })

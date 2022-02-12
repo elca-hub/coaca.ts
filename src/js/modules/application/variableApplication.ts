@@ -64,11 +64,12 @@ export class VariableApplication {
    *
    * @param name 変数名
    */
-  removeVariable (name: string) {
+  removeVariable (id: number, name: string) {
+    console.log(id, name)
     const variable = new Variable()
     const variableList = this.VariableRepository.getVariableList()
     variable.isDefaultVariable(name, variableList)
-    this.VariableRepository.removeVariable(name)
+    this.VariableRepository.removeVariable(id)
   }
   getRepository (): VariableRepository {
     return this.VariableRepository
