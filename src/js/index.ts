@@ -56,11 +56,11 @@ function init () {
     },
     {
       title: '特殊演算子2. sin, cos, tan',
-      des: '三角関数を返します。<br>sin[90] = 1'
+      des: '三角関数を返します。<br>sin[rad[90]] = 1'
     },
     {
       title: '特殊演算子3. asin, acos, atan',
-      des: '逆三角関数を返します。<br>asin[1] = 90'
+      des: '逆三角関数をラジアン角度で返します。<br>asin[1] = 1.57......'
     },
     {
       title: '特殊演算子4. !',
