@@ -55,14 +55,14 @@ export class FormulaControl {
         const minus = new Big(num2)
         return minus.minus(num1)
       case '*':
-        return num1 * num2
+        return new Big(num2).times(num1)
       case '/':
         const div = new Big(num2)
         return div.div(num1)
       case '^':
-        return num2 ** num1
+        return new Big(num2).pow(num1)
       case '%':
-        return num2 % num1
+        return new Big(num2).mod(num1)
       case '_':
         return getBaseLog(num1, num2)
       default:
@@ -71,7 +71,7 @@ export class FormulaControl {
   }
   private factorialize (num: number) {
     if (num === 0) return 1
-    return num * this.factorialize(num - 1)
+    return new Big(num).times(this.factorialize(num - 1))
   }
   specialCalc (ope: string, value: string) {
     const num = Number(value)
@@ -87,7 +87,7 @@ export class FormulaControl {
       case 'rad':
         return num * Math.PI / 180
       case 'abs':
-        return Math.abs(num)
+        return new Big(num).abs()
       case 'asin':
         return Math.asin(num)
       case 'acos':
