@@ -24,6 +24,14 @@ function variableAdd () {
   view.showAlert()
 }
 
+function addClipBoard () {
+  const val = document.getElementById('formulaInput') as HTMLInputElement
+  const text = val.value
+  if (navigator.clipboard && text !== '') {
+    navigator.clipboard.writeText(text)
+  }
+}
+
 document.getElementById('formulaForm').addEventListener('submit', (e) => {
   e.preventDefault()
   submitCalc()
@@ -32,6 +40,11 @@ document.getElementById('formulaForm').addEventListener('submit', (e) => {
 document.getElementById('variableAdd').addEventListener('click', (e) => {
   e.preventDefault()
   variableAdd()
+})
+
+document.getElementById('clipboardButton').addEventListener('click', (e) => {
+  e.preventDefault()
+  addClipBoard()
 })
 
 function init () {
