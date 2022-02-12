@@ -7,42 +7,50 @@ export class VariableRepository {
       {
         name: 'pie',
         value: Math.PI,
-        isDefault: true
+        isDefault: true,
+        id: 0
       },
       {
         name: 'e',
         value: Math.E,
-        isDefault: true
+        isDefault: true,
+        id: 1
       },
       {
         name: 'K',
         value: 1000,
-        isDefault: true
+        isDefault: true,
+        id: 2
       },
       {
         name: 'M',
         value: 1000000,
-        isDefault: true
+        isDefault: true,
+        id: 3
       },
       {
         name: 'G',
         value: 1000000000,
-        isDefault: true
+        isDefault: true,
+        id: 4
       },
       {
         name: 'm',
         value: 0.001,
-        isDefault: true
+        isDefault: true,
+        id: 5
       },
       {
         name: 'μ',
         value: 0.000001,
-        isDefault: true
+        isDefault: true,
+        id: 6
       },
       {
         name: 'n',
         value: 0.000000001,
-        isDefault: true
+        isDefault: true,
+        id: 7
       }
     ]
   }
@@ -51,6 +59,9 @@ export class VariableRepository {
   }
   public findByName (name: string) {
     return this.variableList.find((item) => item.name === name)
+  }
+  public findNotDefaultVariable () {
+    return this.variableList.filter((item) => !item.isDefault)
   }
   public getVariableList () {
     return this.variableList
@@ -71,5 +82,8 @@ export class VariableRepository {
    */
    removeVariable (name: string) {
     this.variableList = this.variableList.filter((item) => item.name !== name || item.isDefault)
+  }
+  getNewId (): number {
+    return this.variableList.length
   }
 }

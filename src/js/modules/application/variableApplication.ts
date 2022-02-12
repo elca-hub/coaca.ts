@@ -29,7 +29,8 @@ export class VariableApplication {
     const newVariableList: IVariable = {
       name,
       value,
-      isDefault: false
+      isDefault: false,
+      id: this.VariableRepository.getNewId()
     }
     variable.checkVariable(newVariableList, variableList)
     this.VariableRepository.save(newVariableList)

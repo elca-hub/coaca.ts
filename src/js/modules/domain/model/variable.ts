@@ -59,5 +59,6 @@ export class Variable {
 export interface IVariable {
   name: string,
   value: number,
-  isDefault: boolean
+  isDefault: boolean,
+  id: number
 }

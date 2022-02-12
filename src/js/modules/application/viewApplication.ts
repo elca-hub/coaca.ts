@@ -3,6 +3,7 @@ import $ from 'jquery'
 import { ViewRepository } from '../domain/service/viewRepository'
 import { View } from '../domain/model/view'
 import { VariableApplication } from './variableApplication'
+import { VariableRepository } from '../domain/service/variableRepository'
 
 export class ViewApplication {
   private fadeTime: number // フェードにかかる時間ms
@@ -49,5 +50,9 @@ export class ViewApplication {
     await new Promise((r) => setTimeout(r, this.fadeTime))
     this.breakAlert()
     this.viewRepository.setIsAlertShow(false)
+  }
+  
+  viewVariableList (vr: VariableRepository) {
+    const variableList = vr.findNotDefaultVariable() // 変数のリストを
   }
 }

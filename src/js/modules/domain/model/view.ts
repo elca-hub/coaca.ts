@@ -73,4 +73,7 @@ export class View {
 
     return inputVariableDom
   }
+
+  public createVariableList (variableList: Variable[]) {
+  }
 }
