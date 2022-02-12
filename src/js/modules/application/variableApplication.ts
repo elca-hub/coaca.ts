@@ -58,4 +58,7 @@ export class VariableApplication {
     variable.isDefaultVariable(name, variableList)
     this.VariableRepository.removeVariable(name)
   }
+  getRepository (): VariableRepository {
+    return this.VariableRepository
+  }
 }

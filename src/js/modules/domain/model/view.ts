@@ -1,3 +1,5 @@
+import {IVariable} from  '../model/variable'
+
 export class View {
   createInput (placeholder: string, type: string, classList: string[], id: string) {
     const inputDom = document.createElement('input')
@@ -74,6 +76,25 @@ export class View {
     return inputVariableDom
   }
 
-  public createVariableList (variableList: Variable[]) {
+  public createVariableList (variableList: IVariable[]) {
+    const variableListDom = document.getElementById('variableList')
+    for (const variable of variableList) {
+      const variableDom = document.createElement('div')
+      variableDom.classList.add('variable-list-item')
+      variableDom.setAttribute('id', variable.id.toString())
+
+      const variableNameDom = document.createElement('div')
+      variableNameDom.classList.add('variable-list-item-name')
+      variableNameDom.innerText = variable.name
+
+      const variableValueDom = document.createElement('div')
+      variableValueDom.classList.add('variable-list-item-value')
+      variableValueDom.innerText = variable.value.toString()
+
+      variableDom.appendChild(variableNameDom)
+      variableDom.appendChild(variableValueDom)
+
+      variableListDom.appendChild(variableDom)
+    }
   }
 }

@@ -25,6 +25,7 @@ export class ViewApplication {
       const valEle = document.getElementById('inputVariableValue') as HTMLInputElement
       variable.addVariable(nameEle.value, Number(valEle.value))
       this.hideAlert()
+      this.viewVariableList(variable.getRepository())
     })
   }
   /**
@@ -51,8 +52,11 @@ export class ViewApplication {
     this.breakAlert()
     this.viewRepository.setIsAlertShow(false)
   }
-  
+
   viewVariableList (vr: VariableRepository) {
-    const variableList = vr.findNotDefaultVariable() // 変数のリストを
+    const variableList = vr.findNotDefaultVariable() // 変数のリストを取得
+    console.log(variableList)
+    const view = new View()
+    view.createVariableList(variableList)
   }
 }
