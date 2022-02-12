@@ -72,13 +72,14 @@ export class VariableRepository {
   }
   /**
    * 指定した変数を変更する
-   * @param name 変数名
+   * @param name 変更後の名前
    * @param value 変更後の値
+   * @param id 変数のID
    */
-   changeVariable (name: string ,value: number) {
-    this.variableList.forEach((item) => {
-      if (item.name === name) item.value = value
-    })
+   changeVariable (name: string ,value: number, id: number) {
+    const variable = this.findById(id)
+    variable.name = name
+    variable.value = value
     this.setLocalStrorage(this.findNotDefaultVariable())
   }
   /**

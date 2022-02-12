@@ -47,6 +47,7 @@ export class VariableApplication {
    * @param value 変更後の値
    */
    changeVariable (name: string ,value: number, id: number) {
+    console.log(name, value)
     const variable = new Variable()
     const variableList = this.VariableRepository.getVariableList()
     variable.isDefaultVariable(name, variableList)
@@ -57,7 +58,7 @@ export class VariableApplication {
       id
     }
     variable.checkVariable(changeVariable, variableList, true)
-    this.VariableRepository.changeVariable(name, value)
+    this.VariableRepository.changeVariable(name, value, id)
   }
   /**
    * 指定した変数を削除します。
