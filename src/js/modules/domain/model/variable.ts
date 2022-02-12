@@ -44,8 +44,7 @@ export class Variable {
     }
     const isNumber = (value: string): boolean => {
       const num = Number(value)
-      if (isNaN(num)) return false
-      return true
+      return !isNaN(num)
     }
     console.log(isNumber(newVariableList.value.toString()))
     if (!isTrueVariableName(newVariableList.name) || !isNumber(newVariableList.value.toString())) {
