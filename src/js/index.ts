@@ -13,7 +13,7 @@ function submitCalc () {
   rpn = variable.convertVariable(rpn)
   const calc = new CalcApplication()
   calc.setRpnArr(rpn)
-  const result = calc.calc()
+  const result = calc.calc(variable)
   val.value = result
 }
 

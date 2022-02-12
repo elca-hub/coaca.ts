@@ -1,5 +1,6 @@
 import { CalcRepository } from "../domain/service/calcRepository"
 import { Calc } from "../domain/model/calc"
+import { VariableApplication } from "./variableApplication"
 
 export class CalcApplication {
   private calcRepository: CalcRepository
@@ -21,11 +22,11 @@ export class CalcApplication {
    * @param {Array} rpnArr RPN配列
    * @returns {string} 計算結果
    */
-  calc (rpnArr: string[] = null): string {
+  calc (va: VariableApplication, rpnArr: string[] = null): string {
     if (rpnArr !== null) {
       this.setRpnArr(rpnArr)
     }
     const calc = new Calc(this.calcRepository.getRpnArr())
-    return calc.rpnCalc()
+    return calc.rpnCalc(va)
   }
 }
