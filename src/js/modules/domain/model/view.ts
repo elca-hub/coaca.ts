@@ -78,6 +78,7 @@ export class View {
 
   public createVariableList (variableList: IVariable[]) {
     const variableListDom = document.getElementById('variableList')
+    variableListDom.innerHTML = ''
     for (const variable of variableList) {
       const variableDom = document.createElement('div')
       variableDom.classList.add('variable-list-item')
