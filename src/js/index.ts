@@ -35,7 +35,7 @@ document.getElementById('variableAdd').addEventListener('click', (e) => {
 
 function init () {
   const view = new ViewApplication()
-  view.viewVariableList(variable.getRepository())
+  view.viewVariableList(variable.getRepository(), variable)
 }
 
 init()

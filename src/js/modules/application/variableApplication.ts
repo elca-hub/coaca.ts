@@ -46,10 +46,17 @@ export class VariableApplication {
    * @param name 変数名
    * @param value 変更後の値
    */
-   changeVariable (name: string ,value: number) {
+   changeVariable (name: string ,value: number, id: number) {
     const variable = new Variable()
     const variableList = this.VariableRepository.getVariableList()
     variable.isDefaultVariable(name, variableList)
+    const changeVariable: IVariable = {
+      name,
+      value,
+      isDefault: false,
+      id
+    }
+    variable.checkVariable(changeVariable, variableList, true)
     this.VariableRepository.changeVariable(name, value)
   }
   /**

@@ -4,6 +4,7 @@ import { ViewRepository } from '../domain/service/viewRepository'
 import { View } from '../domain/model/view'
 import { VariableApplication } from './variableApplication'
 import { VariableRepository } from '../domain/service/variableRepository'
+import { IVariable } from '../domain/model/variable'
 
 export class ViewApplication {
   private fadeTime: number // フェードにかかる時間ms
@@ -25,7 +26,20 @@ export class ViewApplication {
       const valEle = document.getElementById('inputVariableValue') as HTMLInputElement
       variable.addVariable(nameEle.value, Number(valEle.value))
       this.hideAlert()
-      this.viewVariableList(variable.getRepository())
+      this.viewVariableList(variable.getRepository(), variable)
+    })
+  }
+  createChangeVariableInput (variable: VariableApplication, id: number) {
+    const view = new View()
+    this.cretateAlert(view.cretateInputVariable())
+    this.setVaribaleInput(variable.getRepository().findById(id))
+    document.getElementById('variableCancel').addEventListener('click', () => { this.hideAlert() })
+    document.getElementById('variableConfirm').addEventListener('click', () => {
+      const nameEle = document.getElementById('inputVariableName') as HTMLInputElement
+      const valEle = document.getElementById('inputVariableValue') as HTMLInputElement
+      variable.changeVariable(nameEle.value, Number(valEle.value), id)
+      this.hideAlert()
+      this.viewVariableList(variable.getRepository(), variable)
     })
   }
   /**
@@ -53,10 +67,29 @@ export class ViewApplication {
     this.viewRepository.setIsAlertShow(false)
   }
 
-  viewVariableList (vr: VariableRepository) {
+  setVaribaleInput (iv: IVariable) {
+    try {
+      const nameEle = document.getElementById('inputVariableName') as HTMLInputElement
+      const valEle = document.getElementById('inputVariableValue') as HTMLInputElement
+      nameEle.value = iv.name
+      valEle.value = iv.value.toString()
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  viewVariableList (vr: VariableRepository, va: VariableApplication) {
     const variableList = vr.findNotDefaultVariable() // 変数のリストを取得
     console.log(variableList)
     const view = new View()
     view.createVariableList(variableList)
+    for (const v of variableList) {
+      const id = v.id
+      const variableItemEle = document.getElementById(view.getVariableListItemId(id)) as HTMLElement // 変数のDOM要素
+      variableItemEle.addEventListener('click', () => {
+        this.createChangeVariableInput(va, id)
+        this.showAlert()
+      })
+    }
   }
 }

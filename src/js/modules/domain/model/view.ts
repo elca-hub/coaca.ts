@@ -77,17 +77,22 @@ export class View {
   }
 
   public createVariableList (variableList: IVariable[]) {
+    /* 変数リストの親 */
     const variableListDom = document.getElementById('variableList')
     variableListDom.innerHTML = ''
+
     for (const variable of variableList) {
+      /* 変数リストのアイテム */
       const variableDom = document.createElement('div')
       variableDom.classList.add('variable-list-item')
-      variableDom.setAttribute('id', variable.id.toString())
+      variableDom.setAttribute('id', this.getVariableListItemId(variable.id))
 
+      /* 変数名 */
       const variableNameDom = document.createElement('div')
       variableNameDom.classList.add('variable-list-item-name')
       variableNameDom.innerText = variable.name
 
+      /* 変数の値 */
       const variableValueDom = document.createElement('div')
       variableValueDom.classList.add('variable-list-item-value')
       variableValueDom.innerText = variable.value.toString()
@@ -97,5 +102,9 @@ export class View {
 
       variableListDom.appendChild(variableDom)
     }
+  }
+
+  public getVariableListItemId (id: number) {
+    return `variableListItem-${id}`
   }
 }

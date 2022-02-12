@@ -30,7 +30,7 @@ export class Variable {
     })
     return flag
   }
-  checkVariable (newVariableList: IVariable, variableList: IVariable[]) {
+  checkVariable (newVariableList: IVariable, variableList: IVariable[], isChange = false) {
     const isTrueVariableName = (name: string): boolean => {
       const fcClass = new FormulaControl()
       const isInOpeOrBra = (nameOpe: string): boolean => {
@@ -40,7 +40,7 @@ export class Variable {
         }
         return false
       }
-      return !(name.length > 20 || isInOpeOrBra(name) || this.isInVariableList(name, variableList))
+      return !(name.length > 20 || isInOpeOrBra(name) || (this.isInVariableList(name, variableList) && !isChange))
     }
     if (!isTrueVariableName(newVariableList.name)) {
       throw new Error(`The variable name "${newVariableList.name}" is not in the correct format.`)

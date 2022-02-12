@@ -64,6 +64,9 @@ export class VariableRepository {
   public findNotDefaultVariable () {
     return this.variableList.filter((item) => !item.isDefault)
   }
+  public findById (id: number) {
+    return this.variableList.find((item) => item.id === id)
+  }
   public getVariableList () {
     return this.variableList
   }
@@ -76,6 +79,7 @@ export class VariableRepository {
     this.variableList.forEach((item) => {
       if (item.name === name) item.value = value
     })
+    this.setLocalStrorage(this.findNotDefaultVariable())
   }
   /**
    * 指定した変数を削除する
