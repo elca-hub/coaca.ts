@@ -42,7 +42,13 @@ export class Variable {
       }
       return !(name.length > 20 || isInOpeOrBra(name) || (this.isInVariableList(name, variableList) && !isChange))
     }
-    if (!isTrueVariableName(newVariableList.name)) {
+    const isNumber = (value: string): boolean => {
+      const num = Number(value)
+      if (isNaN(num)) return false
+      return true
+    }
+    console.log(isNumber(newVariableList.value.toString()))
+    if (!isTrueVariableName(newVariableList.name) || !isNumber(newVariableList.value.toString())) {
       throw new Error(`The variable name "${newVariableList.name}" is not in the correct format.`)
     }
   }
