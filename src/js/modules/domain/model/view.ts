@@ -92,7 +92,6 @@ export class View {
     /* 変数リストの親 */
     const variableListDom = document.getElementById('variableList')
     variableListDom.innerHTML = ''
-    console.log(variableList)
 
     for (const variable of variableList) {
       /* 変数リストのアイテム */

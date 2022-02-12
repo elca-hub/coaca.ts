@@ -47,7 +47,6 @@ export class VariableApplication {
    * @param value 変更後の値
    */
    changeVariable (name: string ,value: number, id: number) {
-    console.log(name, value)
     const variable = new Variable()
     const variableList = this.VariableRepository.getVariableList()
     variable.isDefaultVariable(name, variableList)
@@ -66,7 +65,6 @@ export class VariableApplication {
    * @param name 変数名
    */
   removeVariable (id: number, name: string) {
-    console.log(id, name)
     const variable = new Variable()
     const variableList = this.VariableRepository.getVariableList()
     variable.isDefaultVariable(name, variableList)

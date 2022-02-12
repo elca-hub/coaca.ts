@@ -86,7 +86,6 @@ export class ViewApplication {
 
   viewVariableList (vr: VariableRepository, va: VariableApplication) {
     const variableList = vr.findNotDefaultVariable() // 変数のリストを取得
-    console.log(variableList)
     const view = new View()
     view.createVariableList(variableList)
     for (const v of variableList) {

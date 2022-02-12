@@ -46,7 +46,6 @@ export class Variable {
       const num = Number(value)
       return !isNaN(num)
     }
-    console.log(isNumber(newVariableList.value.toString()))
     if (!isTrueVariableName(newVariableList.name)) {
       throw new Error(`The variable name "${newVariableList.name}" is not in the correct format.`)
     }
