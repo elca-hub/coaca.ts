@@ -40,15 +40,18 @@ export class Variable {
         }
         return false
       }
-      return !(name.length > 20 || isInOpeOrBra(name) || (this.isInVariableList(name, variableList) && !isChange))
+      return !(name.length > 20 || isInOpeOrBra(name) || (this.isInVariableList(name, variableList) && !isChange) || fcClass.isSpecialOperator(name))
     }
     const isNumber = (value: string): boolean => {
       const num = Number(value)
       return !isNaN(num)
     }
     console.log(isNumber(newVariableList.value.toString()))
-    if (!isTrueVariableName(newVariableList.name) || !isNumber(newVariableList.value.toString())) {
+    if (!isTrueVariableName(newVariableList.name)) {
       throw new Error(`The variable name "${newVariableList.name}" is not in the correct format.`)
+    }
+    if (!isNumber(newVariableList.value.toString())) {
+      throw new Error(`The variable value "${newVariableList.value}" is not in the correct format.`)
     }
   }
   isDefaultVariable(target: string, variableList: IVariable[]) {
