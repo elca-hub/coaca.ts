@@ -47,4 +47,8 @@
 .input-variable-button-confirm-text, .input-variable-button-cancel-text {
   font-size: 1.5rem;
   color: #585858;
+  transition: color .5s ease-in-out;
+  &:hover {
+    color: $fontColorWhite;
+  }
 }
