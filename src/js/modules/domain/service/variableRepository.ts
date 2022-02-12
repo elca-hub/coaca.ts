@@ -56,6 +56,7 @@ export class VariableRepository {
   }
   public save (variableObj: IVariable) {
     this.variableList.push(variableObj)
+    this.setLocalStrorage(this.findNotDefaultVariable())
   }
   public findByName (name: string) {
     return this.variableList.find((item) => item.name === name)
@@ -80,10 +81,23 @@ export class VariableRepository {
    * 指定した変数を削除する
    * @param name 変数名
    */
-   removeVariable (name: string) {
+  removeVariable (name: string) {
     this.variableList = this.variableList.filter((item) => item.name !== name || item.isDefault)
   }
   getNewId (): number {
     return this.variableList.length
+  }
+
+  private setLocalStrorage (variableList: IVariable[]) {
+    // localStorageにvaiablelistがあれば削除する
+    if (localStorage.getItem('variableList')) {
+      localStorage.removeItem('variableList')
+    }
+    // localStorageにvariableListを保存する
+    localStorage.setItem('variableList', JSON.stringify(variableList))
+  }
+
+  public getLocalStorage () {
+    return JSON.parse(localStorage.getItem('variableList'))
   }
 }

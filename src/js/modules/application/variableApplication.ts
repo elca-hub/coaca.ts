@@ -5,6 +5,11 @@ export class VariableApplication {
   private VariableRepository: VariableRepository
   constructor () {
     this.VariableRepository = new VariableRepository()
+    if (this.VariableRepository.getLocalStorage() !== null) {
+      for (const variable of this.VariableRepository.getLocalStorage()) {
+        this.VariableRepository.save(variable)
+      }
+    }
   }
   /**
    * 変数に代入する前のRPN配列に対して変数を代入します。

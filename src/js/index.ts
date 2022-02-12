@@ -32,3 +32,10 @@ document.getElementById('variableAdd').addEventListener('click', (e) => {
   e.preventDefault()
   variableAdd()
 })
+
+function init () {
+  const view = new ViewApplication()
+  view.viewVariableList(variable.getRepository())
+}
+
+init()
