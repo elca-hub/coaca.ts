@@ -120,4 +120,33 @@ export class View {
   public getVariableListItemId (id: number) {
     return `variableListItem-${id}`
   }
+
+  public createDescription (idList: IDescription[]) {
+    /* 説明の親 */
+    const descriptionDom = document.getElementById('desBox')
+    descriptionDom.innerHTML = ''
+    for (const description of idList) {
+      /* タイトル */
+      const titleDivDom = document.createElement('div')
+      titleDivDom.classList.add('des-title')
+      const titleDom = document.createElement('h1')
+      titleDom.innerText = description.title
+      titleDivDom.appendChild(titleDom)
+
+      /* 説明 */
+      const descriptionDivDom = document.createElement('div')
+      descriptionDivDom.classList.add('des-text')
+      const descriptionTextDom = document.createElement('p')
+      descriptionTextDom.innerHTML = description.des
+      descriptionDivDom.appendChild(descriptionTextDom)
+
+      descriptionDom.appendChild(titleDivDom)
+      descriptionDom.appendChild(descriptionDivDom)
+    }
+  }
+}
+
+export interface IDescription {
+  title: string,
+  des: string
 }

@@ -5,6 +5,7 @@ import { View } from '../domain/model/view'
 import { VariableApplication } from './variableApplication'
 import { VariableRepository } from '../domain/service/variableRepository'
 import { IVariable } from '../domain/model/variable'
+import { IDescription } from '../domain/model/view'
 
 export class ViewApplication {
   private fadeTime: number // フェードにかかる時間ms
@@ -96,5 +97,10 @@ export class ViewApplication {
         this.showAlert()
       })
     }
+  }
+
+  viewDescription (descriptionData: IDescription[]) {
+    const view = new View()
+    view.createDescription(descriptionData)
   }
 }
