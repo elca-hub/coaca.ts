@@ -5,6 +5,7 @@ import { ViewApplication } from './modules/application/viewApplication'
 import { IDescription } from './modules/domain/model/view'
 
 const variable = new VariableApplication()
+const view = new ViewApplication()
 
 function submitCalc () {
   const convert = new ConvertApplication()
@@ -19,7 +20,6 @@ function submitCalc () {
 }
 
 function variableAdd () {
-  const view = new ViewApplication()
   view.createVariableInput(variable)
   view.showAlert()
 }
@@ -29,6 +29,7 @@ function addClipBoard () {
   const text = val.value
   if (navigator.clipboard && text !== '') {
     navigator.clipboard.writeText(text)
+    view.viewToast('done!', 'コピーが完了しました')
   }
 }
 
@@ -48,7 +49,6 @@ document.getElementById('clipboardButton').addEventListener('click', (e) => {
 })
 
 function init () {
-  const view = new ViewApplication()
   view.viewVariableList(variable.getRepository(), variable)
   const desList: IDescription[] = [
     {

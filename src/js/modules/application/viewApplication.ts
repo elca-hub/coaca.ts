@@ -20,6 +20,7 @@ export class ViewApplication {
   }
   createVariableInput (variable: VariableApplication) {
     const view = new View()
+    this.breakAlert()
     this.cretateAlert(view.cretateInputVariable())
     document.getElementById('variableCancel').addEventListener('click', () => { this.hideAlert() })
     document.getElementById('variableConfirm').addEventListener('click', () => {
@@ -32,6 +33,7 @@ export class ViewApplication {
   }
   createChangeVariableInput (variable: VariableApplication, id: number) {
     const view = new View()
+    this.breakAlert()
     this.cretateAlert(view.cretateInputVariable(true))
     this.setVaribaleInput(variable.getRepository().findById(id))
     document.getElementById('variableCancel').addEventListener('click', () => { this.hideAlert() })
@@ -60,8 +62,21 @@ export class ViewApplication {
    */
   breakAlert () {
     this.parentDom.innerHTML = ''
+    this.viewRepository.setIsAlertShow(false)
   }
-  async showAlert () {
+  async showAlert (isBlur: boolean = true) {
+    if (isBlur) {
+      console.log(this.viewRepository.getCssStyle('background-color'))
+      $(`#${this.parentDomId}`).css({
+        'backdrop-filter': this.viewRepository.getCssStyle('backdrop-filter'),
+        'background-color': this.viewRepository.getCssStyle('background-color')
+      })
+    } else {
+      $(`#${this.parentDomId}`).css({
+        'backdrop-filter': 'blur(0px)',
+        'background': 'rgba(0, 0, 0, 0)'
+      })
+    }
     $(`#${this.parentDomId}`).fadeIn(this.fadeTime)
     await new Promise((r) => setTimeout(r, this.fadeTime))
     this.viewRepository.setIsAlertShow(true)
@@ -101,5 +116,18 @@ export class ViewApplication {
   viewDescription (descriptionData: IDescription[]) {
     const view = new View()
     view.createDescription(descriptionData)
+  }
+
+  hideToast (time: number) {
+    setTimeout(() => {
+      this.hideAlert()
+    }, time)
+  }
+
+  viewToast (title: string, des: string) {
+    const view = new View()
+    this.cretateAlert(view.createToast({ title, des }, this))
+    this.showAlert(false)
+    // this.hideToast(3000)
   }
 }

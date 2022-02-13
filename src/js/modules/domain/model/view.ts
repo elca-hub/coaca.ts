@@ -1,3 +1,4 @@
+import { ViewApplication } from '../../application/viewApplication'
 import {IVariable} from  '../model/variable'
 
 export class View {
@@ -143,9 +144,51 @@ export class View {
       descriptionDom.appendChild(descriptionDivDom)
     }
   }
+
+  public createToast (content: IToast, va: ViewApplication) {
+    /* Toastの親 */
+    const toastDom = document.createElement('div')
+    toastDom.classList.add('toast-box')
+
+    /* Toastのタイトルと本文を格納するdiv */
+    const toastContentDom = document.createElement('div')
+    toastContentDom.classList.add('toast-content')
+
+    /* Toastのタイトル */
+    const toastTitleDom = document.createElement('div')
+    toastTitleDom.classList.add('toast-title')
+    toastTitleDom.innerText = content.title
+
+    /* Toastの本文 */
+    const toastTextDom = document.createElement('div')
+    toastTextDom.classList.add('toast-text')
+    toastTextDom.innerText = content.des
+
+    /* Toastのボタン */
+    const toastButtonDom = document.createElement('div')
+    toastButtonDom.classList.add('toast-button')
+    const toastButtonTextDom = document.createElement('span')
+    toastButtonTextDom.innerText = 'OK'
+    toastButtonDom.appendChild(toastButtonTextDom)
+    toastButtonTextDom.addEventListener('click', () => {
+      va.hideAlert()
+    })
+
+    toastContentDom.appendChild(toastTitleDom)
+    toastContentDom.appendChild(toastTextDom)
+    toastDom.appendChild(toastContentDom)
+    toastDom.appendChild(toastButtonDom)
+
+    return toastDom
+  }
 }
 
 export interface IDescription {
+  title: string,
+  des: string
+}
+
+export interface IToast {
   title: string,
   des: string
 }
