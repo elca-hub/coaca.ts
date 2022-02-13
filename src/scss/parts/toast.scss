@@ -1,0 +1,22 @@
+.toast-box {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background-color: $fontColorWhite;
+  color: $fontColorBlack;
+  padding: 5px;
+  width: 20rem;
+  border-radius: 5px;
+}
+
+.toast-title {
+  font-size: 2rem;
+}
+
+.toast-button {
+  font-size: 1.4rem;
+  text-align: right;
+  span {
+    padding-left: 1rem;
+  }
+}
