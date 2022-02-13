@@ -1,6 +1,6 @@
 {
   "name": "cac_ts",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Convert and Calculate by RPN for typescript",
   "main": "./src/core.ts",
   "scripts": {
