@@ -5,7 +5,9 @@ export class ViewRepository {
   private styleSheet: {}
   constructor() {
     this.isAlertShow = document.getElementById('alertContent').style.display !== 'none'
-    this.styleSheet = $('#alertContent').css(['background-color', 'backdrop-filter']) // 初期のスタイルを取得
+    window.addEventListener("load", () => {
+      this.styleSheet = $('#alertContent').css(['background-color', 'backdrop-filter']) // 初期のスタイルを取得();
+    })
   }
   setIsAlertShow (isAlertShow: boolean) {
     this.isAlertShow = isAlertShow
