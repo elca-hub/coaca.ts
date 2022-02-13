@@ -66,7 +66,6 @@ export class ViewApplication {
   }
   async showAlert (isBlur: boolean = true) {
     if (isBlur) {
-      console.log(this.viewRepository.getCssStyle('background-color'))
       $(`#${this.parentDomId}`).css({
         'backdrop-filter': this.viewRepository.getCssStyle('backdrop-filter'),
         'background-color': this.viewRepository.getCssStyle('background-color')
@@ -128,6 +127,6 @@ export class ViewApplication {
     const view = new View()
     this.cretateAlert(view.createToast({ title, des }, this))
     this.showAlert(false)
-    // this.hideToast(3000)
+    this.hideToast(3000)
   }
 }
